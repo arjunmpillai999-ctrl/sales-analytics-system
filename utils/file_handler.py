@@ -1,9 +1,19 @@
+<<<<<<< HEAD
 def read_sales_file(file_path):
+=======
+# utils/file_handler.py
+
+def read_sales_file(file_path):
+    """
+    Reads the sales data file and returns all lines
+    """
+>>>>>>> da7096e53b506bdeeb6a64d34660de5dfa576334
     try:
         with open(file_path, "r", encoding="latin-1") as file:
             lines = file.readlines()
         return lines
     except Exception as e:
+<<<<<<< HEAD
         print("Error reading file:", e)
         return []
     
@@ -157,3 +167,7 @@ def validate_and_filter(transactions, region=None, min_amount=None, max_amount=N
     }
 
     return valid_transactions, invalid_count, summary
+=======
+        print(f"Error reading file: {e}")
+        return []
+>>>>>>> da7096e53b506bdeeb6a64d34660de5dfa576334

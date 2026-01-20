@@ -1,8 +1,18 @@
+<<<<<<< HEAD
 def fetch_product_info(product_id):
+=======
+# utils/api_handler.py
+
+def fetch_product_info(product_id):
+    """
+    Dummy API handler (placeholder)
+    """
+>>>>>>> da7096e53b506bdeeb6a64d34660de5dfa576334
     return {
         "product_id": product_id,
         "category": "Electronics"
     }
+<<<<<<< HEAD
 
 import requests
 
@@ -34,3 +44,5 @@ def create_product_mapping(api_products):
         }
 
     return product_mapping
+=======
+>>>>>>> da7096e53b506bdeeb6a64d34660de5dfa576334

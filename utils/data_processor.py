@@ -1,18 +1,37 @@
 def clean_and_validate_data(lines):
+<<<<<<< HEAD
+=======
+    total_records = 0
+    invalid_records = 0
+>>>>>>> da7096e53b506bdeeb6a64d34660de5dfa576334
     valid_records = []
 
     for index, line in enumerate(lines):
         line = line.strip()
 
+<<<<<<< HEAD
         # Skip header
         if index == 0:
             continue
+=======
+        if index == 0:
+            continue
+            
+>>>>>>> da7096e53b506bdeeb6a64d34660de5dfa576334
 
         if not line:
             continue
 
+<<<<<<< HEAD
         parts = line.split("|")
         if len(parts) != 8:
+=======
+        total_records += 1
+        parts = line.split("|")
+
+        if len(parts) != 8:
+            invalid_records += 1
+>>>>>>> da7096e53b506bdeeb6a64d34660de5dfa576334
             continue
 
         (
@@ -27,6 +46,7 @@ def clean_and_validate_data(lines):
         ) = parts
 
         if not transaction_id.startswith("T"):
+<<<<<<< HEAD
             continue
 
         if not customer_id or not region:
@@ -39,19 +59,44 @@ def clean_and_validate_data(lines):
             continue
 
         if quantity <= 0 or unit_price <= 0:
+=======
+            invalid_records += 1
+            continue
+
+        if not customer_id or not region:
+            invalid_records += 1
+            continue
+
+        product_name = product_name.replace(",", "")
+
+        try:
+            quantity = int(quantity)
+            unit_price = float(unit_price.replace(",", ""))
+        except:
+            invalid_records += 1
+            continue
+
+        if quantity <= 0 or unit_price <= 0:
+            invalid_records += 1
+>>>>>>> da7096e53b506bdeeb6a64d34660de5dfa576334
             continue
 
         valid_records.append({
             "TransactionID": transaction_id,
             "Date": date,
             "ProductID": product_id,
+<<<<<<< HEAD
             "ProductName": product_name.replace(",", ""),
+=======
+            "ProductName": product_name,
+>>>>>>> da7096e53b506bdeeb6a64d34660de5dfa576334
             "Quantity": quantity,
             "UnitPrice": unit_price,
             "CustomerID": customer_id,
             "Region": region
         })
 
+<<<<<<< HEAD
     print(f"Valid records after cleaning: {len(valid_records)}")
     return valid_records
 
@@ -267,3 +312,10 @@ def low_performing_products(transactions, threshold=10):
 
     return result
 
+=======
+    print(f"Total records parsed: {total_records}")
+    print(f"Invalid records removed: {invalid_records}")
+    print(f"Valid records after cleaning: {len(valid_records)}")
+
+    return valid_records
+>>>>>>> da7096e53b506bdeeb6a64d34660de5dfa576334
